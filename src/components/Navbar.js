@@ -1,5 +1,6 @@
 import React from 'react'
 import logo from '../../public/Image/Food-Villa.png'
+import { Link } from 'react-router-dom'
 
 const Navbar = () => {
   return (
@@ -7,8 +8,9 @@ const Navbar = () => {
       <img className="logo" src={logo} alt="Food Villa" />
       <ul className="navLinks">
           <li>Home</li>
-          <li>About Us</li>
+          <Link to="/about">About Us</Link>
           <li>My_Orders</li>
+          <button> Sign In</button>
       </ul>
     </div>
   )
