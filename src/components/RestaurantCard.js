@@ -1,6 +1,6 @@
 import React from "react";
 
-const RestaurantCard = ({ imgId, name, avgRating, sla, cuisines }) => {
+const RestaurantCard = ({ cloudinaryImageId, name, avgRating, sla, cuisines }) => {
   let cuisinesList = cuisines[0];
   for (let i = 1; i < cuisines.length; i++) {
     if (cuisinesList.length + cuisines[i].length > 20)
@@ -17,7 +17,7 @@ const RestaurantCard = ({ imgId, name, avgRating, sla, cuisines }) => {
       <div className="imgDiv">
       <img
         className="foodImage"
-        src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/${imgId}`}
+        src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/${cloudinaryImageId}`}
         alt="img here"
       />
       </div>

@@ -59,14 +59,11 @@ const Content = () => {
       <div className="content">
         { dummyData != null &&
           dummyData.map((item) => {
+            // const reqURL = "https://www.swiggy.com/restaurants/";
+            // const foodID = (item?.cta?.link).slice(reqURL.length,item?.cta?.link.length);            
             return (
-              <Link to={ "/restaurant" + item.cta.link } key={item.info.id}> <RestaurantCard
-              key={item.info.id}
-              imgId={item.info.cloudinaryImageId}
-              name={item.info.name}
-              avgRating={item.info.avgRating}
-              sla={item.info.sla}
-              cuisines={item.info.cuisines}
+              <Link to={ item.cta.link } key={item.info.id} link={item}> <RestaurantCard
+                { ...item.info }
             /> </Link>
             );
           })}

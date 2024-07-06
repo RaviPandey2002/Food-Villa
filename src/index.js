@@ -5,7 +5,8 @@ import About from "./components/About"
 import Navbar from './components/Navbar';
 import Home from './components/Home.js';
 import Footer from './components/Footer';
-import Restaurant from "./components/RestaurantMenu.js"
+import RestaurantMenu from "./components/RestaurantMenu.js"
+import SignUpForm from './components/SignUpForm'
 import '../public/index.css'
 import { RouterProvider, createBrowserRouter, Outlet } from 'react-router-dom'
 
@@ -35,8 +36,12 @@ const appRouter = createBrowserRouter([
         element: <About />
       },
       {
+        path:'/signUp',
+        element: <SignUpForm  />
+      },
+      {
         path:'/restaurants/:id',
-        element: <Restaurant />,
+        element: <RestaurantMenu  />,
 
       }
     ]

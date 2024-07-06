@@ -2,7 +2,7 @@ import React from 'react'
 import SearchBar from './SearchBar.js'
 import Content from './Content.js'
 
-const Body = () => { 
+const Home = () => { 
     return (
         <div className="body">
             <Content />
@@ -10,4 +10,4 @@ const Body = () => {
     )
 }
 
-export default Body;
+export default Home;
