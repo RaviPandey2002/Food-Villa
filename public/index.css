@@ -1,0 +1,155 @@
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+#root {
+  height: 100%;
+  /* width: 100%; */
+  display: flex;
+  flex-direction: column;
+  margin: 0 12px;
+}
+
+.navbar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.logo {
+  width: 140px;
+}
+
+.navLinks {
+  display: flex;
+  margin: 2px 30px;
+}
+
+.navLinks a {
+  color: black;
+  display: flex;
+  text-decoration: none;
+  display: flex;
+  margin: 0px 10px;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.searchBox {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.searchBox > input {
+  margin-right: 17px;
+  margin-bottom: 20px;
+}
+
+.content {
+  display: flex;
+  flex-grow: 1;
+  flex-wrap: wrap;
+  padding: 0px 100px;
+  justify-content: space-around;
+  text-align: center;
+  /* overflow: scroll; */
+}
+
+.content h3 {
+  margin-top: 0.5rem;
+}
+.content h4 {
+  margin: 0.2rem 0rem;
+}
+
+.card {
+  height: 18.4rem;
+  width: 16.5rem;
+  /* border: 2px solid black; */
+  border-radius: 20px;
+  /* margin: 5px 5px; */
+  padding: 0px 32px 0px 16px;
+  display: flex;
+  flex-direction: column;
+  font-family: "Basis Grotesque Pro", Arial, sans-serif !important;
+}
+
+.imgDiv {
+  height: 60%;
+  width: 100%;
+  border-radius: 20px;
+}
+
+.foodImage {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 1.7rem;
+}
+
+.footer {
+  height: 4rem;
+  text-align: center;
+  bottom: 0px;
+  font-size: 22px;
+  /* position:absolute; */
+}
+
+.shimmerBox {
+  text-align: center;
+  display: flex;
+  flex-grow: 1;
+  flex-wrap: wrap;
+  padding: 0px 100px;
+  justify-content: space-around;
+}
+
+.shimmer {
+  height: 300px;
+  width: 200px;
+  border: 2px solid black;
+  background: lightgrey;
+  display: flex;
+  flex-direction: column;
+  margin: 8px 2px;
+}
+
+.errorPage {
+  text-align: center;
+}
+
+.content a {
+  text-decoration: none;
+  color: black;
+}
+
+/* #FORM section */
+
+#form {
+  background: rgba(231, 228, 228, 0.573);
+  padding: 2rem;
+}
+
+div#form input {
+  margin-bottom: 1rem;
+}
+div#form input {
+  margin-left: 1rem;
+}
+
+.form {
+  font-weight: bold;
+  width: 40%;
+  margin-left: 25rem;
+  display: flex;
+  flex-direction: column;
+}

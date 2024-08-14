@@ -1,11 +1,14 @@
 {
   "name": "food-villa",
+  "homepage": "https://ravipandey2002.github.io/Food-Villa/",
   "version": "1.0.0",
   "description": "Food_ordering_website",
   "main": "index.js",
   "scripts": {
-    "start": "parcel ./index.html",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "parcel ./public/index.html",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build" 
   },
   "author": "",
   "license": "ISC",
