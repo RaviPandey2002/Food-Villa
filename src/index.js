@@ -7,7 +7,7 @@ import Home from './components/Home.js';
 import Footer from './components/Footer';
 import RestaurantMenu from "./components/RestaurantMenu.js"
 import SignUpForm from './components/SignUpForm'
-import '../public/index.css'
+import '../index.css'
 import { RouterProvider, createBrowserRouter, Outlet } from 'react-router-dom'
 
 const AppLayout = () => {
