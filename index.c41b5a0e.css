@@ -1,0 +1,176 @@
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-size: clamp(1rem, 2.5vw, 1.1rem);
+  overflow-x: hidden;
+}
+
+#root {
+  flex-direction: column;
+  height: 100%;
+  margin: 0 12px;
+  display: flex;
+}
+
+.navbar {
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  display: flex;
+}
+
+.logo {
+  width: 150px;
+  min-width: 104px;
+}
+
+.navLinks {
+  gap: clamp(.3rem, 1vw, 1rem);
+  display: flex;
+}
+
+.navLinks a {
+  color: #000;
+  text-decoration: none;
+  display: flex;
+}
+
+.container {
+  text-align: center;
+  max-width: 90%;
+  margin: auto;
+  padding: 20px;
+}
+
+.title {
+  margin-bottom: 20px;
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
+  font-weight: bold;
+}
+
+.alphabet-container {
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  display: flex;
+}
+
+.alphabet-button {
+  cursor: pointer;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: clamp(.3rem, 1vw, 2rem);
+  font-size: clamp(.6rem, 1vw, 1rem);
+  transition: background-color .2s, color .2s;
+}
+
+.alphabet-button:hover {
+  background-color: #ddd;
+}
+
+.alphabet-button.selected {
+  color: #fff;
+  background-color: #007bff;
+}
+
+.content {
+  text-align: center;
+  flex-wrap: wrap;
+  flex-grow: 1;
+  justify-content: center;
+  display: flex;
+}
+
+.content h3 {
+  margin-top: .5rem;
+}
+
+.content h4 {
+  margin: .2rem 0;
+}
+
+.content a {
+  margin: 0 1.6rem;
+}
+
+.card {
+  border-radius: 20px;
+  flex-direction: column;
+  justify-content: center;
+  width: clamp(168px, 20vw, 250px);
+  display: flex;
+  font-family: Basis Grotesque Pro, Arial, sans-serif !important;
+}
+
+.card h5 {
+  font-size: clamp(1rem, 1.5vw, 1.1rem);
+}
+
+.foodImage {
+  object-fit: cover;
+  border-radius: 1.7rem;
+  width: clamp(150px, 30vw, 250px);
+  height: auto;
+}
+
+.footer {
+  text-align: center;
+  height: 4rem;
+  font-size: 22px;
+  bottom: 0;
+}
+
+.shimmerBox {
+  text-align: center;
+  flex-wrap: wrap;
+  flex-grow: 1;
+  justify-content: space-around;
+  padding: 0 100px;
+  display: flex;
+}
+
+.shimmer {
+  background: #d3d3d3;
+  border: 2px solid #000;
+  flex-direction: column;
+  width: 200px;
+  height: 300px;
+  margin: 8px 2px;
+  display: flex;
+}
+
+.errorPage {
+  text-align: center;
+}
+
+.content a {
+  color: #000;
+  text-decoration: none;
+}
+
+#form {
+  background: #e7e4e492;
+  padding: 2rem;
+}
+
+div#form input {
+  margin-bottom: 1rem;
+  margin-left: 1rem;
+}
+
+.form {
+  flex-direction: column;
+  width: 40%;
+  margin-left: 25rem;
+  font-weight: bold;
+  display: flex;
+}
+
+.selected-text {
+  margin-top: 12px;
+  font-size: 16px;
+}
+/*# sourceMappingURL=index.c41b5a0e.css.map */
