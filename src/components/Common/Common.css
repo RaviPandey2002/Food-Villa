@@ -1,0 +1,140 @@
+/* 
+## Hero Section Shimmer 
+*/
+/* Shimmer Container */
+.shimmer-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Shimmer Card Grid */
+/* .shimmer-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+  } */
+
+.shimmer-card-section {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  gap: 20px;
+  padding: 20px;
+}
+
+/* Shimmer Image */
+.shimmer-image {
+  width: 100%;
+  height: 200px;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  border-radius: 10px;
+  animation: shimmer 1.5s infinite;
+}
+
+/* Shimmer Text */
+.shimmer-text {
+  margin-top: 20px;
+}
+
+/* Shimmer Lines */
+.shimmer-line {
+  height: 20px;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  border-radius: 4px;
+  animation: shimmer 1.5s infinite;
+  margin-bottom: 10px;
+}
+
+.shimmer-line--title {
+  width: 60%;
+  height: 30px;
+}
+
+.shimmer-line--description {
+  width: 80%;
+}
+
+.shimmer-line--button {
+  width: 120px;
+  height: 40px;
+}
+
+/* Shimmer Animation */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Shimmer animation for food item */
+
+/* Shimmer Card */
+.shimmer-card {
+  width: 100%;
+  max-width: 300px; /* Adjust based on your card size */
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  margin: 10px;
+}
+
+/* Food Card Container */
+.food-card {
+  width: 100%;
+  max-width: 300px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  margin: 10px;
+}
+
+/* Food Image */
+.food-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+/* Food Details */
+.food-details {
+  padding: 20px;
+}
+
+.food-details h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.food-details p {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+/* Food Button */
+.food-button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #ff6347;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.food-button:hover {
+  background-color: #ff4500;
+}

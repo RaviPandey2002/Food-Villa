@@ -5,7 +5,7 @@
   "description": "Food_ordering_website",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "parcel serve ./index.html",
+    "start": "parcel serve ./index.html && cp -r public/assets dist/",
     "build": "parcel build index.html && cp -r public/assets dist/",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
@@ -34,6 +34,8 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.23.1",
+    "react-slick": "^0.30.3",
+    "slick-carousel": "^1.8.1",
     "yup": "^1.4.0"
-}
+  }
 }

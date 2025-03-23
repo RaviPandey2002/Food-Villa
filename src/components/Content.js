@@ -1,61 +1,86 @@
 import React, { useEffect, useState } from "react";
-import RestaurantCard from "./RestaurantCard";
-import Shimmer from "./Shimmer";
+import RestaurantCard from "./Common/RestaurantCard";
 import { Link } from 'react-router-dom'
 import axios from "axios";
+import FoodShimmer from "./Common/Shimmer";
+import Shimmer from "./Common/Shimmer";
 
 const Content = () => {
   const [listItems, setListItems] = useState(null);
   const [search, setSearch] = useState("");
-  const [dummyData, setDummyData] = useState(null);
+  // const [dummyData, setDummyData] = useState(null);
+  const [loading, setLoading] = useState(true)
+
+  // To shuffle the constant data from the API
+  function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  }
 
   useEffect(() => {
-    if (!listItems) handleFetch();
-    if (dummyData === null) setDummyData(listItems);
-    if (search != "") {
-      handleFetch()
-    } else setDummyData(listItems);
-  }, [search, listItems]);
+    const handleFetch = async () => {
+      setLoading(true);
+      // URL for getting random food items data from The Meal DB API.
+      // const fetchRandomMealURL = `${process.env.REACT_APP_FETCH_RANDOM_FOOD_ITEMS}`
 
-  const handleFetch = async () => {
+      // const searchUrl = `${process.env.REACT_APP_SEARCH_MEAL_BY_FIRST_LETTER}${firstLetter}`;
+      let mappedData = []
+      if (search.trim().length < 1) {
 
-    // URL for getting random food items data from The Meal DB API.
-    // const fetchRandomMealURL = `${process.env.REACT_APP_FETCH_RANDOM_FOOD_ITEMS}`
+        let url = `${process.env.REACT_APP_FETCH_MULTIPLE_FOOD_ITEMS}`
 
-    // const searchUrl = `${process.env.REACT_APP_SEARCH_MEAL_BY_FIRST_LETTER}${firstLetter}`;
-    let mappedData = []
-    if (search.trim().length < 1) {
-      const fetchRandomMealURL = `${process.env.REACT_APP_FETCH_RANDOM_FOOD_ITEMS}`;
-      console.log("fetchRandomMealURL", fetchRandomMealURL)
+        let fetchedData = await axios(url)
+        fetchedData = fetchedData?.data?.meals
+        fetchedData = fetchedData.splice(0, 12)
 
-      const mealPromises = []
-      for (let i = 1; i <= 15; i++) {
-        mealPromises.push(axios.get(fetchRandomMealURL))
+        mappedData = shuffleArray(fetchedData)
+
+        // used to get random food item on each api request and then collect!!
+        /*
+  
+        const fetchRandomMealURL = `${process.env.REACT_APP_FETCH_RANDOM_FOOD_ITEMS}`;
+        console.log("fetchRandomMealURL", fetchRandomMealURL)
+  
+        const mealPromises = []
+        for (let i = 1; i <= 15; i++) {
+          mealPromises.push(axios.get(fetchRandomMealURL))
+        }
+  
+        const uniqueIds = new Set();
+        const responses = await Promise.all(mealPromises);
+  
+        mappedData = responses.reduce((acc, response) => {
+          const meal = response?.data?.meals?.[0];
+          if (meal && !uniqueIds.has(meal.idMeal)) {
+            uniqueIds.add(meal.idMeal);
+            acc.push(meal);
+          }
+          return acc;
+        }, []);
+  
+        */
+
+      } else {
+        const firstLetter = search[0];
+
+        const searchUrl = `${process.env.REACT_APP_SEARCH_MEAL_BY_FIRST_LETTER}${firstLetter}`
+        // console.log("searchUrl", searchUrl)
+        mappedData = (await axios.get(searchUrl))?.data?.meals;
+
       }
 
-      const uniqueIds = new Set();
-      const responses = await Promise.all(mealPromises);
+      setListItems(mappedData)
+      setLoading(false);
 
-      mappedData = responses.reduce((acc, response) => {
-        const meal = response?.data?.meals?.[0];
-        if (meal && !uniqueIds.has(meal.idMeal)) {
-          uniqueIds.add(meal.idMeal);
-          acc.push(meal);
-        }
-        return acc;
-      }, []);
-      setListItems(mappedData);
+    };
 
-    } else {
-      const firstLetter = search[0];
+    if (!listItems) handleFetch();
+    handleFetch()
 
-      const searchUrl = `${process.env.REACT_APP_SEARCH_MEAL_BY_FIRST_LETTER}${firstLetter}`
-      console.log("searchUrl", searchUrl)
-      mappedData = (await axios.get(searchUrl))?.data?.meals;
-
-      setDummyData(mappedData)
-    }
-  };
+  }, [search]);
 
   const alphabets = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
   const handleClick = (letter) => {
@@ -106,21 +131,16 @@ const Content = () => {
 
         </div>
       </div>
-      {dummyData == null && <Shimmer />}
       <div className="content">
-        {dummyData != null &&
-          dummyData.map((item) => {
-            // const reqURL = "https://www.swiggy.com/restaurants/";
-            // const foodID = (item?.cta?.link).slice(reqURL.length,item?.cta?.link.length); 
+        {
+          loading ? (<Shimmer type="card" />) :
+            (listItems.map((food) => {
 
-            return (
-              // <Link to={item.cta.link} key={item.info.id} link={item}> <RestaurantCard
-              //   {...item.info}
-              // /> </Link>
-
-              <Link key={item.idMeal} > <RestaurantCard {...item} /></Link>
-            );
-          })}
+              return (
+                <div key={food.idMeal} > <RestaurantCard food={food} loading={loading} /></div>
+              );
+            }))
+        }
       </div>
     </>
   );

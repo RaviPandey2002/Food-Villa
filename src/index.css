@@ -62,7 +62,7 @@ body {
 }
 
 .alphabet-button {
-  padding: clamp(.3rem, 1vw, 2rem);
+  padding: clamp(.3rem, .5vw, 1.5rem);
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: clamp(.6rem, 1vw, 1rem);
@@ -92,6 +92,7 @@ body {
 
 .content {
   display: flex;
+  flex-direction: row;
   flex-grow: 1;
   flex-wrap: wrap;
   /* padding: 0px 100px; */
@@ -168,24 +169,6 @@ body {
   /* position:absolute; */
 }
 
-.shimmerBox {
-  text-align: center;
-  display: flex;
-  flex-grow: 1;
-  flex-wrap: wrap;
-  padding: 0px 100px;
-  justify-content: space-around;
-}
-
-.shimmer {
-  height: 300px;
-  width: 200px;
-  border: 2px solid black;
-  background: lightgrey;
-  display: flex;
-  flex-direction: column;
-  margin: 8px 2px;
-}
 
 .errorPage {
   text-align: center;
@@ -220,9 +203,25 @@ div#form input {
 
 /* NEW Changes */
 
-
-
 .selected-text {
   margin-top: 12px;
   font-size: 16px;
+}
+
+/* Common Layout */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.section {
+  margin-bottom: 40px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    padding: 10px;
+  }
 }

@@ -1,14 +1,15 @@
 import React from "react";
 import ReactDOM from 'react-dom/client'
-import ErrorPage from "./components/ErrorPage.js"
+import ErrorPage from "./components/Common/ErrorPage.js"
 import About from "./components/About"
-import Navbar from './components/Navbar';
+import Navbar from './components/Common/Navbar.js';
 import Home from './components/Home.js';
-import Footer from './components/Footer';
+import Footer from './components/Common/Footer.js';
 import RestaurantMenu from "./components/RestaurantMenu.js"
 import SignUpForm from './components/SignUpForm'
-import '../index.css'
+import './index.css'
 import { RouterProvider, createBrowserRouter, Outlet } from 'react-router-dom'
+import ExploreMeals from "./components/ExploreMeals/ExploreMeals.js";
 
 const AppLayout = () => {
   return (
@@ -30,6 +31,10 @@ const appRouter = createBrowserRouter([
       {
         path:"/",
         element:<Home/>
+      },
+      {
+        path:"/explore-meals",
+        element:<ExploreMeals/>
       },
       {
         path:'/about',
