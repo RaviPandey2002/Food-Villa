@@ -8,7 +8,6 @@ import Shimmer from "./Common/Shimmer";
 const Content = () => {
   const [listItems, setListItems] = useState(null);
   const [search, setSearch] = useState("");
-  // const [dummyData, setDummyData] = useState(null);
   const [loading, setLoading] = useState(true)
 
   // To shuffle the constant data from the API
@@ -67,7 +66,6 @@ const Content = () => {
         const firstLetter = search[0];
 
         const searchUrl = `${process.env.REACT_APP_SEARCH_MEAL_BY_FIRST_LETTER}${firstLetter}`
-        // console.log("searchUrl", searchUrl)
         mappedData = (await axios.get(searchUrl))?.data?.meals;
 
       }

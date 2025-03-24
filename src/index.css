@@ -5,7 +5,8 @@ body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
-  font-size: clamp(1rem, 2.5vw, 1.1rem);}
+  font-size: clamp(1rem, 2.5vw, 1.1rem);
+}
 
 #root {
   height: 100%;
@@ -29,7 +30,7 @@ body {
 .navLinks {
   display: flex;
   /* margin: 2px 30px; */
-  gap: clamp(.3rem, 1vw, 1rem)
+  gap: clamp(0.3rem, 1vw, 1rem);
 }
 
 .navLinks a {
@@ -62,10 +63,10 @@ body {
 }
 
 .alphabet-button {
-  padding: clamp(.3rem, .5vw, 1.5rem);
+  padding: clamp(0.3rem, 0.5vw, 1.5rem);
   border: 1px solid #ccc;
   border-radius: 4px;
-  font-size: clamp(.6rem, 1vw, 1rem);
+  font-size: clamp(0.6rem, 1vw, 1rem);
   cursor: pointer;
   background-color: #f0f0f0;
   transition: background-color 0.2s, color 0.2s;
@@ -79,16 +80,6 @@ body {
   background-color: #007bff;
   color: white;
 }
-
-/* .searchBox {
-  text-align: center;
-  margin-bottom: 16px;
-}
-
-.searchBox > input {
-  margin-right: 17px;
-  margin-bottom: 20px;
-} */
 
 .content {
   display: flex;
@@ -108,7 +99,7 @@ body {
   margin: 0.2rem 0rem;
 }
 
-.content a{
+.content a {
   margin: 0 1.6rem;
 }
 
@@ -123,22 +114,9 @@ body {
   font-family: "Basis Grotesque Pro", Arial, sans-serif !important;
 }
 
-.card h5{
+.card h5 {
   font-size: clamp(1rem, 1.5vw, 1.1rem);
 }
-
-/* .imgDiv {
-  height: 60%;
-  width: 100%;
-  border-radius: 20px;
-} */
-
-/* .foodImage {
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
-  border-radius: 1.7rem;
-} */
 
 .foodImage {
   /* width: 100%; */
@@ -168,7 +146,6 @@ body {
   font-size: 22px;
   /* position:absolute; */
 }
-
 
 .errorPage {
   text-align: center;

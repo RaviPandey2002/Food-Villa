@@ -1,7 +1,6 @@
 /* 
 ## Hero Section Shimmer 
 */
-/* Shimmer Container */
 .shimmer-container {
   width: 100%;
   max-width: 1200px;
@@ -9,7 +8,6 @@
   padding: 20px;
 }
 
-/* Shimmer Card Grid */
 /* .shimmer-card-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -27,7 +25,6 @@
   padding: 20px;
 }
 
-/* Shimmer Image */
 .shimmer-image {
   width: 100%;
   height: 200px;
@@ -37,12 +34,10 @@
   animation: shimmer 1.5s infinite;
 }
 
-/* Shimmer Text */
 .shimmer-text {
   margin-top: 20px;
 }
 
-/* Shimmer Lines */
 .shimmer-line {
   height: 20px;
   background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
@@ -76,9 +71,8 @@
   }
 }
 
-/* Shimmer animation for food item */
+/* ## Shimmer animation for food item */
 
-/* Shimmer Card */
 .shimmer-card {
   width: 100%;
   max-width: 300px; /* Adjust based on your card size */
@@ -89,7 +83,6 @@
   margin: 10px;
 }
 
-/* Food Card Container */
 .food-card {
   width: 100%;
   max-width: 300px;
@@ -100,14 +93,12 @@
   margin: 10px;
 }
 
-/* Food Image */
 .food-image {
   width: 100%;
   height: 200px;
   object-fit: cover;
 }
 
-/* Food Details */
 .food-details {
   padding: 20px;
 }
@@ -123,7 +114,6 @@
   margin-bottom: 20px;
 }
 
-/* Food Button */
 .food-button {
   padding: 10px 20px;
   font-size: 1rem;
