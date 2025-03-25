@@ -1,132 +1,225 @@
-
 /* Base Styles (Mobile-First) */
 .explore-meals {
-    padding: 1rem;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  
-  .explore-meals h2 {
-    font-size: 1.5rem;
-    text-align: center;
-    margin-bottom: 1.5rem;
-    color: #333;
-  }
+  padding: 1rem;
+}
 
+.explore-meals h2 {
+  font-size: 1.5rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
 
-  /* Error State */
+/* Loading State */
+.loading-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  font-size: 1.2rem;
+  color: #666;
+}
+
+/* Error State */
 .error-state {
-    text-align: center;
+  text-align: center;
+  padding: 1.5rem;
+  background: #fff8f8;
+  border: 1px solid #ffcccc;
+  border-radius: 8px;
+  margin: 1rem 0;
+}
+
+.error-state p {
+  color: #d32f2f;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.error-state button {
+  background: #ff6b6b;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.3s;
+}
+
+.error-state button:hover {
+  background: #ff5252;
+}
+
+/* Meals Grid - Smart Centering */
+.meals-grid {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1rem;
+  padding: 0.5rem;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+/* Special cases for few items */
+.meals-grid:has(> :nth-child(1):last-child) {
+  grid-template-columns: repeat(1, minmax(140px, 300px));
+}
+
+.meals-grid:has(> :nth-child(2):last-child) {
+  grid-template-columns: repeat(2, minmax(140px, 220px));
+}
+
+.meals-grid:has(> :nth-child(3):last-child) {
+  grid-template-columns: repeat(3, minmax(140px, 200px));
+}
+
+.meal-card {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+  width: 100%;
+}
+
+.meal-card:hover {
+  transform: translateY(-5px);
+}
+
+.meal-card img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+}
+
+.meal-card h3 {
+  padding: 0.75rem;
+  font-size: 0.9rem;
+  text-align: center;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Tablet (768px and up) */
+@media (min-width: 768px) {
+  .explore-meals {
     padding: 1.5rem;
-    background: #fff8f8;
-    border: 1px solid #ffcccc;
-    border-radius: 8px;
-    margin: 1rem 0;
   }
-  
-  .error-state p {
-    color: #d32f2f;
-    margin-bottom: 1rem;
+
+  .explore-meals h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .meals-grid {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1.5rem;
+  }
+
+  /* Adjust few-item layouts for tablet */
+  .meals-grid:has(> :nth-child(1):last-child) {
+    grid-template-columns: repeat(1, minmax(180px, 350px));
+  }
+
+  .meals-grid:has(> :nth-child(2):last-child) {
+    grid-template-columns: repeat(2, minmax(180px, 250px));
+  }
+
+  .meals-grid:has(> :nth-child(3):last-child) {
+    grid-template-columns: repeat(3, minmax(180px, 220px));
+  }
+
+  .meal-card img {
+    height: 150px;
+  }
+
+  .meal-card h3 {
     font-size: 1rem;
   }
-  
-  .error-state button {
-    background: #ff6b6b;
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 0.9rem;
-    transition: background 0.3s;
-  }
-  
-  .error-state button:hover {
-    background: #ff5252;
-  }
-  
-  /* Meals Grid */
+}
+
+/* Desktop (1024px and up) */
+@media (min-width: 1024px) {
   .meals-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(140px, 2fr));
-    gap: 1rem;
-    padding: 0.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
   }
-  
-  .meal-card {
-    background: white;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s;
+
+  /* Adjust few-item layouts for desktop */
+  .meals-grid:has(> :nth-child(1):last-child) {
+    grid-template-columns: repeat(1, minmax(220px, 400px));
   }
-  
-  .meal-card:hover {
-    transform: translateY(-5px);
+
+  .meals-grid:has(> :nth-child(2):last-child) {
+    grid-template-columns: repeat(2, minmax(220px, 300px));
   }
-  
+
+  .meals-grid:has(> :nth-child(3):last-child) {
+    grid-template-columns: repeat(3, minmax(220px, 250px));
+  }
+
   .meal-card img {
-    width: 100%;
-    height: 120px;
-    object-fit: cover;
+    height: 180px;
   }
-  
-  .meal-card h3 {
-    padding: 0.75rem;
-    font-size: 0.9rem;
-    text-align: center;
-    margin: 0;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+
+  .error-state {
+    padding: 2rem;
   }
-  
-  /* Tablet (768px and up) */
-  @media (min-width: 768px) {
-    .explore-meals {
-      padding: 1.5rem;
-    }
-  
-    .explore-meals h2 {
-      font-size: 2rem;
-      margin-bottom: 2rem;
-    }
-  
-    .meals-grid {
-      grid-template-columns: repeat(3, minmax(180px, 1fr));
-      gap: 1.5rem;
-    }
-  
-    .meal-card img {
-      height: 150px;
-    }
-  
-    .meal-card h3 {
-      font-size: 1rem;
-    }
+
+  .error-state p {
+    font-size: 1.1rem;
   }
+
+  .error-state button {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+  }
+}
+
+/* Large Desktop (1440px and up) */
+@media (min-width: 1440px) {
+  .meals-grid {
+    max-width: 1400px;
+  }
+}
+
+/* ## Suggestion div - meals < 4 */
+
+.suggestions-panel {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: #f8f9fa;
+  border-radius: 12px;
+  text-align: center;
   
-  /* Desktop (1024px and up) */
-  @media (min-width: 1024px) {
-    .meals-grid {
-      grid-template-columns: repeat(5, minmax(220px, 1fr));
-      gap: 2rem;
-    }
+  h4 {
+    margin-bottom: 1rem;
+    color: #555;
+  }
+}
+
+.suggestion-tags {
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+  justify-content: center;
   
-    .meal-card img {
-      height: 180px;
-    }
-  
-    .error-state {
-      padding: 2rem;
-    }
-  
-    .error-state p {
-      font-size: 1.1rem;
-    }
-  
-    .error-state button {
-      padding: 0.75rem 1.5rem;
-      font-size: 1rem;
+  button {
+    background: white;
+    border: 1px solid #ddd;
+    padding: 0.6rem 1.2rem;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.2s;
+    
+    &:hover {
+      background: #ff6b6b;
+      color: white;
+      border-color: transparent;
     }
   }
+}
