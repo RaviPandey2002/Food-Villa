@@ -15,7 +15,7 @@ const ExploreMeals = () => {
   const [error, setError] = useState(null);
   const [randomCategories, setRandomCategories] = useState([]);
   const [loadingCategories, setLoadingCategories] = useState(false)
-  const allMeals = new Set();
+  const mealIds = new Set();
   const navigate = useNavigate();
 
 
@@ -34,16 +34,20 @@ const ExploreMeals = () => {
           mealsArray = [...mealsByCategory]
         }
         else {
-          for (const ingredient of queryIngredients) {
+          outerLoop: for (const ingredient of queryIngredients) {
             const url = `${process.env.REACT_APP_SEARCH_MEAL_BY_INGREDIENT}${ingredient}`
             const data = (await axios(url))?.data?.meals;
-            data?.forEach((dataMeal) => allMeals.add(dataMeal))
 
-            if (allMeals.size > 16) {
-              break;
+            for (let i = 0; i < data.length; i++) {
+              if (!mealIds.has(data[i]?.idMeal)) {
+                mealsArray.push(data[i]);
+                mealIds.add(data[i]?.idMeal);
+              }
+              if (mealsArray.length >= 15) {
+                break outerLoop; // using single break for both loops.
+              }
             }
           }
-          mealsArray = new Array(...allMeals);
         }
 
         mealsArray = mealsArray.slice(0, 15);
@@ -112,16 +116,15 @@ const ExploreMeals = () => {
         <div className="error-state">
           <p>{error}</p>
           <button onClick={() => window.history.back()}>Go Back</button>
-          {/* Or suggest popular ingredients */}
         </div>
       ) : (
         <>
           <div className="meals-grid">
             {
               meals.map((meal) => (
-                <div key={meal.idMeal} className="meal-card">
-                  <img src={meal.strMealThumb} alt={meal.strMeal} />
-                  <h3>{meal.strMeal}</h3>
+                <div onClick={() => navigate(`/meal/${meal?.idMeal}`)} key={meal?.idMeal} className="meal-card">
+                  <img src={meal?.strMealThumb} alt={meal?.strMeal} />
+                  <h3>{meal?.strMeal}</h3>
                 </div>
               ))}
           </div>

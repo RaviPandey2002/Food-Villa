@@ -10,6 +10,7 @@ import SignUpForm from './components/SignUpForm'
 import './index.css'
 import { RouterProvider, createBrowserRouter, Outlet } from 'react-router-dom'
 import ExploreMeals from "./components/ExploreMeals/ExploreMeals.js";
+import MealDetails from "./components/MealDetails/MealDetails.js";
 
 const AppLayout = () => {
   return (
@@ -17,7 +18,6 @@ const AppLayout = () => {
       <Navbar />
       <Outlet />
       <Footer />
-    
     </>
   )
 }
@@ -47,14 +47,15 @@ const appRouter = createBrowserRouter([
       {
         path:'/restaurants/:id',
         element: <RestaurantMenu  />,
-
+      },
+      {
+        path: '/meal/:id',
+        element: <MealDetails />
       }
     ]
   }
   
 ])
-
-
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
