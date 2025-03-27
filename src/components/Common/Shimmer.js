@@ -31,6 +31,10 @@ const Shimmer = ({ type = "default" }) => {
     );
   }
 
+  if(type == "random-categories"){
+    
+  }
+
   return (
     <div className="shimmer-container">
       <div className="shimmer-line"></div>

@@ -12,6 +12,7 @@ const HeroSection = () => {
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
   const ingredient = [];
+  const [imagesLoaded, setImagesLoaded] = useState(false)
 
   useEffect(() => {
     const url = process.env.REACT_APP_FETCH_RANDOM_FOOD_ITEMS;
@@ -32,8 +33,29 @@ const HeroSection = () => {
           if (meal && !idSet.has(meal.idMeal)) {
             fetchedMeals.push(meal);
             idSet.add(meal.idMeal);
+
+            // 3. Prefetch images in the background
+            const img = new Image();
+            img.src = meal.strMealThumb;
+
+            // Optional: Prefetch higher quality version if available
+            if (meal.strMealThumbHD) {
+              const imgHD = new Image();
+              imgHD.src = meal.strMealThumbHD;
+            }
           }
         });
+
+        // 4. Set state after all images are prefetched
+        const prefetchPromises = fetchedMeals.map(meal => {
+          return new Promise((resolve) => {
+            const img = new Image();
+            img.onload = resolve;
+            img.src = meal.strMealThumb;
+          });
+        });
+
+        await Promise.all(prefetchPromises);
 
         setMeals(fetchedMeals);
         setLoading(false);
@@ -43,8 +65,45 @@ const HeroSection = () => {
       }
     };
 
-    fetchMeals();
+    // 5. Add delay if needed (e.g., for initial page load prioritization)
+    const fetchDelay = 300; // ms delay for non-critical fetch
+    const timer = setTimeout(fetchMeals, fetchDelay);
+
+    return () => clearTimeout(timer);
+
+    // fetchMeals();
   }, []);
+
+  // For shimmer effect for hero section on complete image load
+  useEffect(() => {
+    if (!loading && meals.length > 0) {
+      const images = document.querySelectorAll(".hero-image");
+      let loadedCount = 0;
+
+      const handleImageLoad = () => {
+        loadedCount++;
+        if (loadedCount === images.length) {
+          setImagesLoaded(true); // All images have loaded
+        }
+      };
+
+      images.forEach((img) => {
+        if (img.complete) {
+          handleImageLoad(); // Image is already loaded
+        } else {
+          img.addEventListener("load", handleImageLoad); // Wait for image to load
+        }
+      });
+
+      // Cleanup event listeners
+      return () => {
+        images.forEach((img) => {
+          img.removeEventListener("load", handleImageLoad);
+        });
+      };
+    }
+  }, [loading, meals]);
+
 
   const settings = {
     dots: true,
@@ -54,6 +113,9 @@ const HeroSection = () => {
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 3000,
+    pauseOnHover: true,
+    arrows: true,
+    cssEase: "cubic-bezier(0.4, 0, 0.2, 1)"
   };
 
   const extractIngredients = (meal) => {
@@ -77,13 +139,13 @@ const HeroSection = () => {
     // Encode ingredients for URL
     const params = new URLSearchParams();
     ingredients.forEach(ing => params.append('ingredients', ing));
-    console.log('params',params)
+    console.log('params', params)
     navigate(`/explore-meals?${params.toString()}`);
   };
 
   return (
     <section className="hero-section">
-      {(loading) ? (
+      {(loading && !imagesLoaded) ? (
         <Shimmer type="hero-section" />
       ) : (
         <div className="container">
@@ -94,8 +156,7 @@ const HeroSection = () => {
                   className="hero-image"
                   src={meal.strMealThumb}
                   alt={meal.strMeal}
-                  onLoad={() => { }} // This helps with some edge cases in React
-                  onError={() => { }} // Handle potential image errors
+                  fetchpriority="high"  // Load first image ASAP
                 />
                 <div className="hero-text">
                   <h1>Try Our Special: {meal.strMeal}</h1>
