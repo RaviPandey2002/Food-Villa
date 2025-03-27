@@ -9,7 +9,7 @@ const Navbar = () => {
   return (
     <div className="navbar">
       <Link to="/">
-        <img className="logo" src="/assets/logo.png" alt="Food Villa" />
+        <img className="logo" src="/public/assets/logo.png" alt="Food Villa" />
       </Link>
       <ul className="navLinks">
         <Link to="/">Home</Link>
