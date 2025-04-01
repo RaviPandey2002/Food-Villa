@@ -4,20 +4,14 @@ import { Link } from 'react-router-dom'
 import axios from "axios";
 import FoodShimmer from "./Common/Shimmer";
 import Shimmer from "./Common/Shimmer";
+import { shuffleArray } from "../utils/common";
 
 const Content = () => {
   const [listItems, setListItems] = useState(null);
   const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(true)
 
-  // To shuffle the constant data from the API
-  function shuffleArray(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
-    }
-    return array;
-  }
+  
 
   useEffect(() => {
     const handleFetch = async () => {

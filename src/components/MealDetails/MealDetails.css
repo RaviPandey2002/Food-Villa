@@ -44,3 +44,13 @@
       grid-template-columns: 1fr;
     }
   }
+
+  /* ##Video */
+  .video-section {
+    margin-top: 3rem;
+    grid-column: 1 / -1;
+  }
+  
+  .video-section iframe {
+    border-radius: 8px;
+  }

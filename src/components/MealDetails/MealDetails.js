@@ -66,6 +66,19 @@ const MealDetails = () => {
                 <div className="instructions-section">
                     <h2>Instructions</h2>
                     <p>{meal.strInstructions}</p>
+                    {meal.strYoutube && (
+                        <div className="video-section">
+                            <h2>Video Tutorial</h2>
+                            <iframe
+                                width="100%"
+                                height="400"
+                                src={`https://www.youtube.com/embed/${meal.strYoutube.split('v=')[1]}`}
+                                title={meal.strMeal}
+                                frameBorder="0"
+                                allowFullScreen
+                            />
+                        </div>
+                    )}
                 </div>
             </div>
         </div>
