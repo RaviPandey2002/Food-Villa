@@ -40,7 +40,7 @@ const MealDetails = () => {
     }
 
     return (
-        <div className="meal-details">
+        <div className="meal-details outlet-container">
             <div className="meal-header">
                 <h1>{meal.strMeal}</h1>
                 <img

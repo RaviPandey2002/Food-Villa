@@ -31,7 +31,8 @@ const ExploreMeals = () => {
           const response = await axios(categoryUrl);
           const mealsByCategory = response?.data?.meals;
 
-          mealsArray = [...mealsByCategory]
+          mealsArray = mealsByCategory ? [...mealsByCategory] : []
+
         }
         else {
           outerLoop: for (const ingredient of queryIngredients) {
@@ -108,7 +109,7 @@ const ExploreMeals = () => {
   }, [location.search])
 
   return (
-    <div className="explore-meals">
+    <div className="explore-meals outlet-container">
       <h2>Meals with - {ingredientsList || queryCategory || 'Love'}</h2>
       {isLoading ? (
         <Shimmer type="card" />

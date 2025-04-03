@@ -16,13 +16,10 @@ const CategoryExplorer = () => {
 			try {
 				const categoryUrl = `${process.env.REACT_APP_FETCH_ALL_CATEGORIES}`
 				const response = await axios(categoryUrl);
-				console.log("categoryUrl", categoryUrl)
-				console.log("response", response)
 				if (response?.data) {
 					let categories = response?.data?.categories;
 					let shuffledCategories = shuffleArray(categories);
 					shuffledCategories = shuffledCategories.splice(0, 14);
-					console.log("shuffledCategories", shuffledCategories)
 					setAllCategories(shuffledCategories)
 					setLoading(false)
 				}
@@ -35,10 +32,11 @@ const CategoryExplorer = () => {
 
 	}, [])
 
-	const handleCategoryMealClick = (e) => {
-		const categoryName = e.currentTarget.getAttribute('category-name');
-		navigate(`/explore-meals?category=${categoryName}`)
-	}
+	const handleCategoryMealClick = (categoryName) => {
+		return () => {
+			navigate(`/explore-meals?category=${categoryName}`);
+		};
+	};
 
 	return (
 		<div>
@@ -53,9 +51,7 @@ const CategoryExplorer = () => {
 									{/* First row of 7 categories */}
 									<div className="category-row">
 										{allCategories.slice(0, 7).map(category => (
-											<div key={`first-${category.idCategory}`} onClick={(e) => {
-												handleCategoryMealClick(e)
-											}} category-name={`${category.strCategory}`} className="category-item">
+											<div key={`first-${category.idCategory}`} onClick={handleCategoryMealClick(category.strCategory)} className="category-item">
 												<img
 													src={category.strCategoryThumb}
 													alt={category.strCategory}
@@ -69,7 +65,7 @@ const CategoryExplorer = () => {
 									{/* Second row of 7 categories */}
 									<div className="category-row">
 										{allCategories.slice(7, 14).map(category => (
-											<div key={`second-${category.idCategory}`} onClick={handleCategoryMealClick} category-id={`${category.idCategory}`} className="category-item">
+											<div key={`second-${category.idCategory}`} onClick={handleCategoryMealClick(category.strCategory)} className="category-item">
 												<img
 													src={category.strCategoryThumb}
 													alt={category.strCategory}

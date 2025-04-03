@@ -6,7 +6,7 @@ import CategoryExplorer from './CategoryExplorer/CategoryExplorer.js'
 
 const Home = () => {
     return (
-        <div className="body">
+        <div className="outlet-container">
             <HeroSection />
             <CategoryExplorer />
             <Content />

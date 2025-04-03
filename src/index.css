@@ -202,3 +202,7 @@ div#form input {
     padding: 10px;
   }
 }
+
+.outlet-container{
+  flex-grow: 1;
+}
