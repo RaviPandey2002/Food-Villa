@@ -1,0 +1,87 @@
+.favorite-card {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+  text-align: center;
+}
+
+.favorite-card:hover {
+  transform: translateY(-5px);
+}
+
+.favorite-card img {
+  width: 300;
+  height: 200px;
+  border-radius: 6px;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.favorite-info {
+  flex: wrap;
+  padding: 1rem;
+}
+
+.favorite-info h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.favorite-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.8rem;
+}
+
+.view-button {
+  flex: 1;
+  background: #4caf50;
+  color: white;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.remove-button {
+  flex: 1;
+  background: #f44336;
+  color: white;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .favorite-card img {
+    height: 140px;
+    width: 220px;
+  }
+
+  .view-button {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 480px) {
+  .favorite-info {
+    min-width: 120px;
+  }
+
+  .view-button {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 519px) {
+  .favorite-card img {
+    height: 176px;
+    width: 315px;
+  }
+}

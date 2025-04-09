@@ -13,7 +13,7 @@ const RestaurantCard = ({ food, loading }) => {
 
   return (
     <div className="food-card">
-      <img src={food.strMealThumb} alt={food.strMeal} className="food-image" />
+      <img src={food.strMealThumb} alt={food.strMeal} loading="lazy" className="food-image" />
       <div className="food-details">
         <h3>{food.strMeal}</h3>
         <p>{food.strInstructions.substring(0, 100)}...</p>
