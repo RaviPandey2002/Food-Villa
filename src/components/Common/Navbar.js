@@ -9,19 +9,12 @@ const Navbar = () => {
   return (
     <div className="navbar">
       <Link to="/">
-        <img className="logo" src="/public/assets/logo.png" alt="Food Villa" />
+        <img className="logo" src="/public/assets/logo.png" alt="Food Villa Logo" />
       </Link>
       <ul className="navLinks">
-        <Link to="/">Home</Link>
-        <Link to="/about">About Us</Link>
-        <Link to="/Cart">My Orders</Link>
-        {!isLoggedIn && (
-          <Link to="/signUp">
-            <button
-              onClick={(e) => { e.target.value = "LoggedIn"; setStatus("LogIn") }}
-            > {status}</button>
-          </Link>
-        )}
+        <li><Link to="/">Home</Link></li>
+        <li><Link to="/about">About Us</Link></li>
+        <li><Link to="/favourites">Favourite List</Link></li>
       </ul>
     </div>
   );

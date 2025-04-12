@@ -31,8 +31,38 @@ const Shimmer = ({ type = "default" }) => {
     );
   }
 
-  if(type == "random-categories"){
-    
+  console.log("type", type)
+
+  if (type === 'meal-details') {
+    return (
+      <div className="shimmer-meal-section">
+        <div className="shimmer-meal-container">
+          <div className="shimmer-header">
+            <div className="shimmer-title"></div>
+            <div className="shimmer-image"></div>
+          </div>
+        </div>
+
+        <div className="shimmer-content-body">
+          <div className="shimmer-ingredient-section shimmer-animate">
+            <div className="shimmer-line shimmer-line--title"></div>
+            <ul className="shimmer-ingredients">
+              {Array.from({ length: 6 }).map((_, index) => (
+                <li key={index} className="shimmer-line shimmer-animate"></li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="shimmer-video-section">
+            <div className="shimmer-image shimmer-meal-container"></div>
+            <div className="shimmer-text">
+              <div className="shimmer-line shimmer-line--title"></div>
+              <div className="shimmer-line shimmer-line--description"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
   }
 
   return (

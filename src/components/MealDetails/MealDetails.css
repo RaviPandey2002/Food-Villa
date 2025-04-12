@@ -98,14 +98,3 @@
   color: #d32f2f;
 }
 
-@media (max-width: 480px) {
-  .ingredients-header {
-      flex-direction: column;
-      align-items: flex-start;
-  }
-  
-  .favorite-button {
-      width: 100%;
-      justify-content: center;
-  }
-}

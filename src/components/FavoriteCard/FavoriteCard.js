@@ -1,12 +1,10 @@
 import { useEffect, useState } from "react";
 import "./FavoriteCard.css"
+import { useNavigate } from "react-router-dom";
 
-const FavoriteCard = (cardMeal) => {
+const FavoriteCard = ({ cardMeal, favorites, setFavorites }) => {
   const [meal, setMeal] = useState();
-
-  useEffect(()=>{
-    setMeal(cardMeal.cardMeal);
-  },[])
+  const navigate = useNavigate();
 
   const removeFavorite = (mealId) => {
     const updatedFavorites = favorites.filter(fav => fav.idMeal !== mealId);
@@ -17,22 +15,22 @@ const FavoriteCard = (cardMeal) => {
   return (
     <div className="favorite-card">
       <img
-        src={meal?.strMealThumb}
-        alt={meal?.strMeal}
-        onClick={() => navigate(`/meal/${meal?.idMeal}`)}
+        src={cardMeal?.strMealThumb}
+        alt={cardMeal?.strMeal}
+        onClick={() => navigate(`/meal/${cardMeal?.idMeal}`)}
       />
       <div className="favorite-info">
-        <h3>{meal?.strMeal}</h3>
+        <h3>{cardMeal?.strMeal}</h3>
         <div className="favorite-actions">
           <button
             className="view-button"
-            onClick={() => navigate(`/meal/${meal?.idMeal}`)}
+            onClick={() => navigate(`/meal/${cardMeal?.idMeal}`)}
           >
             View Recipe
           </button>
           <button
             className="remove-button"
-            onClick={() => removeFavorite(meal?.idMeal)}
+            onClick={() => removeFavorite(cardMeal?.idMeal)}
           >
             Remove
           </button>

@@ -10,10 +10,11 @@ const Favorites = () => {
   // Load favorites from localStorage
   useEffect(() => {
     const storedFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
+    console.log(" favorites favorites", favorites);
     setFavorites(storedFavorites);
   }, []);
 
-  
+
   return (
     <div className="favorites-page outlet-container">
       <h1>Your Favorite Recipes</h1>
@@ -26,7 +27,12 @@ const Favorites = () => {
       ) : (
         <div className="favorites-grid">
           {favorites.map(meal => (
-            <FavoriteCard key={meal.idMeal} cardMeal={meal} />
+            <FavoriteCard
+              key={meal.idMeal}
+              cardMeal={meal}
+              favorites={favorites}
+              setFavorites={setFavorites}
+            />
           ))}
         </div>
       )}

@@ -128,3 +128,95 @@
 .food-button:hover {
   background-color: #ff4500;
 }
+
+.shimmer-meal-section {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.shimmer-meal-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.shimmer-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.shimmer-header-text {
+  width: 40%;
+  height: 30px;
+  border-radius: 4px;
+}
+
+/* Ingredients, Instructions, and Video Sections */
+.shimmer-content-header {
+  width: 40%;
+  height: 30px;
+  border-radius: 4px;
+  margin-top: 20px;
+}
+
+.shimmer-content-body {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.shimmer-ingredient-section {
+  padding: 10px;
+  min-width: 164px;
+  width: 33% !important;
+}
+
+.shimmer-video-section {
+  width: 100%;
+  padding: 20px;
+}
+
+.shimmer-content {
+  width: 100%;
+  max-width: 800px;
+  height: 20px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  background-color: #dcdcdc;
+}
+
+/* Responsive Behavior */
+@media (max-width: 768px) {
+  .shimmer-header-text,
+  .shimmer-content-header {
+    width: 70%;
+  }
+
+  .shimmer-header-image {
+    height: 200px;
+  }
+
+  .shimmer-content {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .shimmer-header-text,
+  .shimmer-content-header {
+    width: 90%;
+  }
+
+  .shimmer-header-image {
+    height: 180px;
+  }
+
+  .shimmer-content {
+    height: 16px;
+  }
+}
