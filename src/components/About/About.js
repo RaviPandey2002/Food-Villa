@@ -30,7 +30,7 @@ const About = () => {
           </div>
           <div className="story-image">
             <img
-              src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3"
+              src="/public/Images/about-story.jpeg"
               alt="Cooking ingredients"
               loading="lazy"
             />
@@ -60,7 +60,6 @@ const About = () => {
               <li>⚛️ React Hooks</li>
               <li>🎨 CSS Grid/Flexbox</li>
               <li>📦 Context API</li>
-              <li>🔍 Debounced Search</li>
               <li>💾 LocalStorage Magic</li>
             </ul>
           </div>

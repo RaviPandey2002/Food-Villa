@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import './HeroSection.css';
 import Slider from "react-slick";
 import 'slick-carousel/slick/slick.css';
@@ -11,8 +11,9 @@ const HeroSection = () => {
   const [meals, setMeals] = useState([]);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
-  const ingredient = [];
   const [imagesLoaded, setImagesLoaded] = useState(false)
+  const sliderRef = useRef(null);
+  const [truncateLength, setTruncateLength] = useState(150);
 
   useEffect(() => {
     const url = process.env.REACT_APP_FETCH_RANDOM_FOOD_ITEMS;
@@ -104,6 +105,19 @@ const HeroSection = () => {
     }
   }, [loading, meals]);
 
+  // For showing the number of words in hero-text
+  useEffect(() => {
+    const updateLength = () => {
+      const width = window.innerWidth;
+      if (width < 480) setTruncateLength(70);
+      else if (width < 768) setTruncateLength(100);
+      else setTruncateLength(150);
+    };
+
+    updateLength(); // Initial run
+    window.addEventListener('resize', updateLength);
+    return () => window.removeEventListener('resize', updateLength);
+  })
 
   const settings = {
     dots: true,
@@ -111,10 +125,10 @@ const HeroSection = () => {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    autoplay: true,
+    autoplay: false,
     autoplaySpeed: 3000,
     pauseOnHover: true,
-    arrows: true,
+    arrows: false,
     cssEase: "cubic-bezier(0.4, 0, 0.2, 1)"
   };
 
@@ -149,7 +163,7 @@ const HeroSection = () => {
         <Shimmer type="hero-section" />
       ) : (
         <div className="container">
-          <Slider {...settings}>
+          <Slider ref={sliderRef} {...settings}>
             {meals.map((meal) => (
               <div key={meal.idMeal} className="hero-content">
                 <img
@@ -160,7 +174,7 @@ const HeroSection = () => {
                 />
                 <div className="hero-text">
                   <h1>Try Our Special: {meal.strMeal}</h1>
-                  <p>{meal.strInstructions?.substring(0, 150)}...</p>
+                  <p>{meal.strInstructions?.substring(0, truncateLength)}...</p>
                   <button onClick={() => { handleExploreClick(meal) }} className="hero-button">
                     Explore More Meals
                   </button>
@@ -168,6 +182,15 @@ const HeroSection = () => {
               </div>
             ))}
           </Slider>
+
+          <div className="custom-arrow-wrapper">
+            <div className="custom-arrow" onClick={() => sliderRef.current.slickPrev()}>
+              <img src="/public/assets/left-arrow.png" />
+            </div>
+            <div className="custom-arrow" onClick={() => sliderRef.current.slickNext()}>
+              <img src="/public/assets/right-arrow.png" />
+            </div>
+          </div>
         </div>
       )}
     </section>

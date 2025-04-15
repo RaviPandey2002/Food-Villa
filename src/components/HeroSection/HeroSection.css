@@ -1,6 +1,5 @@
 /* Hero Section Container */
 .hero-section {
-  padding: 40px 20px;
   background-color: #f8f8f8;
 }
 
@@ -50,7 +49,7 @@
 
 /* Hero Description */
 .hero-text p {
-  font-size: clamp(.9rem, 1.5vw, 1.2rem);
+  font-size: clamp(0.9rem, 1.5vw, 1.2rem);
   margin-bottom: 20px;
   line-height: 1.5;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
@@ -61,7 +60,7 @@
   padding: 10px 20px;
   font-size: 1rem;
   color: #fff;
-  background-color: #ff6347; 
+  background-color: #ff6347;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -69,8 +68,8 @@
 }
 
 .hero-button:hover {
-  background-color: #ff4500; 
-  transform: scale(1.05); 
+  background-color: #ff4500;
+  transform: scale(1.05);
 }
 
 /* Slick Carousel Customization */
@@ -84,6 +83,60 @@
 
 .slick-dots li.slick-active button:before {
   color: #ff6347; /* Active dot color */
+}
+
+/* Image Fallback Style */
+.hero-image-fallback {
+  object-fit: contain !important;
+  background: #f5f5f5;
+  padding: 20px;
+}
+
+.hero-button::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.7s;
+}
+
+.hero-button:hover::after {
+  left: 100%;
+}
+
+.hero-content h1 {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.6s 0.3s forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.custom-arrow-wrapper {
+  display: flex;
+  margin-top: 1.6rem;
+  width: 100%;
+  min-width: 30px;
+  align-items: center;
+  justify-content: end;
+}
+
+.custom-arrow img {
+  /* font-size: clamp(20px, 1vw, 25px); */
+  width: 50px;
 }
 
 /* Responsive Design */
@@ -107,66 +160,30 @@
 }
 
 @media (max-width: 480px) {
-  .hero-text h1 {
-    font-size: 1.1rem;
+
+  .hero-content .hero-text {
+    width: 73%;
+    padding: 16px;
   }
 
-  .hero-text p {
+  .hero-content .hero-text h1 {
+    font-size: 0.8rem;
+  }
+
+  .hero-content .hero-text p {
     font-size: 0.7rem;
   }
 
   .hero-image {
-    height: 250px;
+    height: 213px;
   }
 
   .hero-button {
     padding: 6px 12px;
     font-size: 0.7rem;
   }
-}
 
-.slick-prev:before,
-.slick-next:before {
-  color: #ff6347 !important; /* Arrow color */
-  font-size: 40px; /* Arrow size */
-}
-
-/* Image Fallback Style */
-.hero-image-fallback {
-  object-fit: contain !important;
-  background: #f5f5f5;
-  padding: 20px;
-}
-
-.hero-button::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, 
-    transparent, 
-    rgba(255,255,255,0.2), 
-    transparent);
-  transition: left 0.7s;
-}
-
-.hero-button:hover::after {
-  left: 100%;
-}
-
-.hero-content h1 {
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeInUp 0.6s 0.3s forwards;
-}
-
-@keyframes fadeInUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
+  .custom-arrow img {
+    width: 39px;
   }
 }
-
-
