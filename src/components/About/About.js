@@ -7,26 +7,22 @@ const About = () => {
       <section className="food-hero">
         <div className="hero-content">
           <h1>Savor the Code, Taste the Innovation</h1>
-          <p>Where culinary inspiration meets cutting-edge web development</p>
+          <p>Where raw JavaScript meets culinary inspiration</p>
         </div>
       </section>
 
       <section className="story-section">
         <div className="story-container">
           <div className="story-text">
-            <h2>Our Recipe for Success</h2>
+            <h2>From Scratch Cooking</h2>
             <p>
-              Just like a perfect meal needs quality ingredients, our app combines:
+              This project demonstrates how fundamental web technologies can create rich experiences:
             </p>
             <ul className="culinary-metaphors">
-              <li>🍳 <strong>Fresh APIs</strong> - Harvested daily from TheMealDB</li>
-              <li>🧑‍🍳 <strong>Masterful React Techniques</strong> - Carefully prepared components</li>
-              <li>🔥 <strong>Performance Optimization</strong> - Slow-cooked for perfect delivery</li>
+              <li>🧂 <strong>Vanilla Foundation</strong> - Built with core HTML, CSS, and JavaScript</li>
+              <li>🔪 <strong>Sharp Performance</strong> - Optimized without heavyweight libraries</li>
+              <li>🥘 <strong>API Simmering</strong> - Multiple endpoints expertly blended together</li>
             </ul>
-            <p>
-              We've cooked up this digital kitchen to help food lovers discover, save,
-              and share their favorite recipes with the world!
-            </p>
           </div>
           <div className="story-image">
             <img
@@ -38,42 +34,62 @@ const About = () => {
         </div>
       </section>
 
-      {/* Technical Showcase */}
       <section className="tech-showcase">
-        <h2>Under the Hood</h2>
+        <h2>API Handling Showcase</h2>
         <div className="tech-grid">
           <div className="tech-card">
-            <h3>API Mastery</h3>
+            <h3>Core APIs Utilized</h3>
             <div className="code-snippet">
               <pre>
-                {`fetch('https://www.themealdb.com/api/json/v1/1/filter.php?c=Seafood')
-  .then(response => response.json())
-  .then(data => setMeals(data.meals));`}
+                {`// TheMealDB - Primary recipe data
+fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=chicken')
+
+// Custom proxy server - Handling CORS
+fetch('/api/proxy?url=' + encodeURIComponent(apiUrl))
+
+// Browser APIs - No external dependencies
+localStorage.setItem('favorites', JSON.stringify(data))`}
               </pre>
             </div>
-            <p>Dynamic data fetching with error handling and loading states</p>
+            <p>Implemented proper error handling, loading states, and data transformation for each</p>
           </div>
 
           <div className="tech-card">
-            <h3>Secret Ingredients</h3>
+            <h3>Pure JavaScript Solutions</h3>
             <ul className="tech-stack">
-              <li>⚛️ React Hooks</li>
-              <li>🎨 CSS Grid/Flexbox</li>
-              <li>📦 Context API</li>
-              <li>💾 LocalStorage Magic</li>
+              <li>🔍 <strong>Custom Search</strong> - Client-side filtering without external libraries</li>
+              <li>🔄 <strong>State Management</strong> - Using vanilla JS patterns</li>
+              <li>📱 <strong>Responsive Design</strong> - Media queries and flexible layouts</li>
+              <li>⚡ <strong>Performance</strong> - Lazy loading, efficient renders</li>
             </ul>
           </div>
         </div>
       </section>
 
-      {/* Developer Note */}
       <section className="developer-note">
         <blockquote>
-          "Building this app was like preparing a complex dish -
-          each component had to be perfectly timed and executed.
-          The result? A delicious digital experience!"
-          <footer> Ravi</footer>
+          "This project serves as a demonstration that beautiful, functional web applications can be built
+          without relying on frameworks - just like great food needs only quality ingredients and proper technique."
+          <footer>- Ravi, demonstrating core web competency</footer>
         </blockquote>
+      </section>
+
+      <section className="principles-section">
+        <h2>Core Development Principles</h2>
+        <div className="principles-grid">
+          <div className="principle-card">
+            <h3>Modular Architecture</h3>
+            <p>Components organized like a well-stocked pantry - everything in its place</p>
+          </div>
+          <div className="principle-card">
+            <h3>Progressive Enhancement</h3>
+            <p>Core functionality works everywhere, enhanced where supported</p>
+          </div>
+          <div className="principle-card">
+            <h3>Defensive Coding</h3>
+            <p>Graceful degradation when APIs fail or features aren't supported</p>
+          </div>
+        </div>
       </section>
     </div>
   );

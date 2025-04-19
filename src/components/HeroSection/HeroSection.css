@@ -1,6 +1,7 @@
 /* Hero Section Container */
 .hero-section {
   background-color: #f8f8f8;
+  padding: 22px 0px;
 }
 
 /* Container for Centering Content */
@@ -157,10 +158,13 @@
     padding: 7px 13px;
     font-size: 0.8rem;
   }
+
+  .hero-section {
+    padding: 10px 20px;
+  }
 }
 
 @media (max-width: 480px) {
-
   .hero-content .hero-text {
     width: 73%;
     padding: 16px;

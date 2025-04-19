@@ -128,14 +128,6 @@ body {
   border-radius: 1.7rem;
 }
 
-.footer {
-  height: 4rem;
-  text-align: center;
-  bottom: 0px;
-  font-size: 22px;
-  /* position:absolute; */
-}
-
 .errorPage {
   text-align: center;
 }
@@ -199,9 +191,6 @@ div#form input {
     padding: 0 10px;
   }
 
-  .hero-section{
-    padding: 0px 0px;
-  }
 }
 
 @media (max-width: 500px){

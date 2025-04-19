@@ -43,7 +43,7 @@ const CategoryExplorer = () => {
 			<div className="category-container">
 				{
 					loading
-						? <Shimmer type="card" />
+						? <Shimmer type="food-categories" />
 						: (
 							<>
 								<h2 className="section-title">Our Food Categories</h2>

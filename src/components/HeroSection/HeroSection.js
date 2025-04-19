@@ -13,7 +13,7 @@ const HeroSection = () => {
   const navigate = useNavigate();
   const [imagesLoaded, setImagesLoaded] = useState(false)
   const sliderRef = useRef(null);
-  const [truncateLength, setTruncateLength] = useState(150);
+  const [truncateLength, setTruncateLength] = useState(120);
 
   useEffect(() => {
     const url = process.env.REACT_APP_FETCH_RANDOM_FOOD_ITEMS;
@@ -125,7 +125,7 @@ const HeroSection = () => {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    autoplay: false,
+    autoplay: true,
     autoplaySpeed: 3000,
     pauseOnHover: true,
     arrows: false,

@@ -158,8 +158,29 @@
   }
 }
 
-.alphabet-circle.rotate {
-  animation: rotate-circle 0.6s ease-in-out;
+.alphabet-circle.rotate-right {
+  animation: rotate-circle-right 0.6s ease-in-out;
 }
 
+.alphabet-circle.rotate-left {
+  animation: rotate-circle-left 0.6s ease-in-out;
+}
+
+@keyframes rotate-circle-right {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotate-circle-left {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
 

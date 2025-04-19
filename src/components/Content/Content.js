@@ -9,7 +9,7 @@ const Content = () => {
   const [listItems, setListItems] = useState(null);
   const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(true);
-  const [animatedCircle, setAnimatedCircle] = useState(null); // 🔁 new state
+  const [animatedCircle, setAnimatedCircle] = useState({ index: null, direction: null });
 
   const alphabetGroups = [
     "ABCDEFGHI".split(""),
@@ -43,12 +43,18 @@ const Content = () => {
 
   const handleClick = (letter, groupIndex) => {
     setSearch((prev) => (prev === letter ? "" : letter));
-    setAnimatedCircle(groupIndex);
 
-    // Remove the animation class after animation ends
+    const letterIndex = alphabetGroups[groupIndex].indexOf(letter);
+    const isLeftSide = letterIndex > alphabetGroups[groupIndex].length / 2;
+
+    setAnimatedCircle({
+      index: groupIndex,
+      direction: isLeftSide ? "rotate-left" : "rotate-right",
+    });
+
     setTimeout(() => {
-      setAnimatedCircle(null);
-    }, 600); // match CSS animation duration
+      setAnimatedCircle({ index: null, direction: null });
+    }, 600);
   };
 
   return (
@@ -57,30 +63,33 @@ const Content = () => {
         <h2 className="title">Choose a Letter to Filter Dishes</h2>
 
         <div className="multiple-circles-wrapper">
-          {alphabetGroups.map((group, groupIdx) => (
-            <div
-              className={`alphabet-circle ${
-                animatedCircle === groupIdx ? "rotate" : ""
-              }`}
-              key={groupIdx}
-            >
-              {group.map((letter, index) => {
-                const angle = (360 / group.length) * index;
-                return (
-                  <button
-                    key={letter}
-                    onClick={() => handleClick(letter, groupIdx)}
-                    className={`circle-letter ${search === letter ? "selected" : ""}`}
-                    style={{
-                      transform: `rotate(${angle}deg) translate(3em) rotate(-${angle}deg)`,
-                    }}
-                  >
-                    {letter}
-                  </button>
-                );
-              })}
-            </div>
-          ))}
+          {alphabetGroups.map((group, groupIdx) => {
+            const animationClass =
+              animatedCircle.index === groupIdx ? animatedCircle.direction : "";
+
+            return (
+              <div
+                className={`alphabet-circle ${animationClass}`}
+                key={groupIdx}
+              >
+                {group.map((letter, index) => {
+                  const angle = (360 / group.length) * index;
+                  return (
+                    <button
+                      key={letter}
+                      onClick={() => handleClick(letter, groupIdx)}
+                      className={`circle-letter ${search === letter ? "selected" : ""}`}
+                      style={{
+                        transform: `rotate(${angle}deg) translate(3em) rotate(-${angle}deg)`,
+                      }}
+                    >
+                      {letter}
+                    </button>
+                  );
+                })}
+              </div>
+            );
+          })}
         </div>
       </div>
 

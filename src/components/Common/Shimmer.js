@@ -9,7 +9,6 @@ const Shimmer = ({ type = "default" }) => {
         <div className="shimmer-text">
           <div className="shimmer-line shimmer-line--title"></div>
           <div className="shimmer-line shimmer-line--description"></div>
-          <div className="shimmer-line shimmer-line--button"></div>
         </div>
       </div>
     )
@@ -60,6 +59,26 @@ const Shimmer = ({ type = "default" }) => {
               <div className="shimmer-line shimmer-line--description"></div>
             </div>
           </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (type === "food-categories") {
+    return (
+      <div className="container">
+        <h5 className="section-title">Our Food Categories</h5>
+        <div className="shimmer-category-section d-flex">
+          {[0, 1].map(row => (
+            <div key={row} className="shimmer-category-row ">
+              {Array.from({ length: 7 }).map((_, index) => (
+                <div key={index} className="shimmer-category-item">
+                  <div className="shimmer-circle"></div>
+                  <div className="shimmer-line shimmer-line--text"></div>
+                </div>
+              ))}
+            </div>
+          ))}
         </div>
       </div>
     );
