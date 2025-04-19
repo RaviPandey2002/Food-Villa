@@ -56,8 +56,8 @@ const fetchRecipes = async (category) => {
 
 <tbody>
     <tr>
-        <td><img src="public/Images/desktop-view.png" alt="Logo" width="1000" height="576"></td>
-        <td><img src="public/Images/mobile-view.png" alt="Logo" width="1000" height="576"></td>
+        <td><img src="public/Images/desktop-view.png" alt="Logo" width="1000" height="546"></td>
+        <td><img src="public/Images/mobile-view.png" alt="Logo" width="400" height="776"></td>
     </tr>
 </tbody>
 
